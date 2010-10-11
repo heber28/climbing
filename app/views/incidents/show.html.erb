@@ -29,6 +29,7 @@
 </p>
 
 <%=render(:partial=>'map',:locals=>{:data=>"#{@incident.id}.xml"})%>
+<%=render(:partial=>'map',:locals=>{:data=>"#{@incident.id}.xml"})%>
 
 <%= link_to 'Edit', edit_incident_path(@incident) %> |
 <%= link_to 'Back', incidents_path %>

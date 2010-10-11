@@ -7,7 +7,7 @@ class IncidentsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  {
-        render :text => @incidents.to_xml(:root=>"data") 
+        render :text=>@incidents.to_xml(:root=>"data") 
       }
     end
   end
@@ -78,11 +78,12 @@ class IncidentsController < ApplicationController
     @incident = Incident.find(params[:id])
     respond_to do |format|
       format.html {
+        render :partial=>'show',:locals=>{:incident=>@incident}
       }
       format.xml {
         render :text=>@incident.to_xml(
           :only=>[:latitude,:longitude,:title,:description],
-          :root=>"name")
+          :root=>"data")
       }
     end
   end
