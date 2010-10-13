@@ -18,7 +18,11 @@ class IncidentsController < ApplicationController
     @incident = Incident.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {
+        @incident.latitude=params['latitude']
+        @incident.longitude=params['longitude']
+        render :partial=>'new',:locals=>{:incident=>@incident}
+      } 
       format.xml  { render :xml => @incident }
     end
   end
@@ -26,6 +30,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/1/edit
   def edit
     @incident = Incident.find(params[:id])
+    render :partial=>'edit', :locals=>{:incident=>@incident}
   end
 
   # POST /incidents
